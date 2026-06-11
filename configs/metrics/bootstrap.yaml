@@ -1,0 +1,3 @@
+bootstrap_enabled: true
+n_bootstrap: 1000
+alpha: 0.05

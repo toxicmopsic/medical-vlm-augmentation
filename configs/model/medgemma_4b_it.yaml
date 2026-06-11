@@ -1,0 +1,12 @@
+model_id: google/medgemma-4b-it
+torch_dtype: auto
+processor_use_fast: false
+adapter_path: ""
+attn_implementation: ""
+
+quantization:
+  enabled: false
+  bnb_4bit_use_double_quant: true
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: bf16
+  bnb_4bit_quant_storage: bf16

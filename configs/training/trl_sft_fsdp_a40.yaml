@@ -1,0 +1,25 @@
+defaults:
+  - trl_sft
+  - _self_
+
+backend: trl_sft
+
+bf16: true
+fp16: false
+tf32: true
+optim: adamw_torch_fused
+
+fsdp: full_shard auto_wrap
+fsdp_config:
+  fsdp_version: 1
+  transformer_layer_cls_to_wrap:
+    - Gemma3DecoderLayer
+  backward_prefetch: backward_pre
+  forward_prefetch: false
+  limit_all_gathers: true
+  use_orig_params: true
+  sync_module_states: true
+  cpu_ram_efficient_loading: false
+  activation_checkpointing: false
+
+torch_compile: false

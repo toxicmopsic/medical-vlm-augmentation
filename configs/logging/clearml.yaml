@@ -1,0 +1,4 @@
+report_to: clearml
+level: INFO
+project_name: thesis-rrg
+task_name: ${experiment.name}

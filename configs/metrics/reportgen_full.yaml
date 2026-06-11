@@ -1,0 +1,9 @@
+defaults:
+  - text
+  - radgraph
+  - chexbert
+  - radeval
+  - bootstrap
+
+radgraph_model_type: modern-radgraph-xl
+radgraph_reward_level: all

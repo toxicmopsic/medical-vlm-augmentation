@@ -1,0 +1,5 @@
+name: h1_image_aug_strong
+family: h1
+notes: "Hypothesis 1: strong augmentation (negative control)"
+data:
+  augmentation_name: strong

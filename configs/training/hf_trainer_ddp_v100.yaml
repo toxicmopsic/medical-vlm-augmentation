@@ -1,0 +1,20 @@
+defaults:
+  - hf_trainer
+  - _self_
+
+backend: hf_trainer
+
+bf16: false
+fp16: true
+tf32: false
+optim: adamw_torch_fused
+
+fsdp: null
+ddp_backend: nccl
+ddp_timeout: 5400
+ddp_bucket_cap_mb: null
+ddp_find_unused_parameters: false
+ddp_broadcast_buffers: false
+ddp_static_graph: null
+
+torch_compile: false

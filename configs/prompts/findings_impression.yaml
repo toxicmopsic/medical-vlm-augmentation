@@ -1,0 +1,2 @@
+prompt_template: "<start_of_image> {indication} findings:"
+target_format: "findings + impression"

@@ -1,0 +1,6 @@
+name: h2_e2c_llm_paraphrase
+family: h2
+notes: "Hypothesis 2 E2C LLM paraphrase target augmentation"
+data:
+  experiment_mode: e2c
+  prepare_mode: e2c

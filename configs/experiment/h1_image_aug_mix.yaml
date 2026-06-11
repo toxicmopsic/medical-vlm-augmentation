@@ -1,0 +1,5 @@
+name: h1_image_aug_mix
+family: h1
+notes: "Hypothesis 1: mixed augmentation"
+data:
+  augmentation_name: mix

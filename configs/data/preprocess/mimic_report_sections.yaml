@@ -1,0 +1,10 @@
+indication_section_names:
+  - INDICATION
+  - HISTORY
+  - CLINICAL HISTORY
+  - REASON FOR EXAM
+  - EXAMINATION
+findings_section_names:
+  - FINDINGS
+impression_section_names:
+  - IMPRESSION

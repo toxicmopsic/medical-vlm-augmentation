@@ -1,0 +1,41 @@
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# OS
+.DS_Store
+
+# Runtime outputs
+outputs/
+train/
+eval/
+predict/
+prepare/
+
+# Data artifacts
+MIMIC_CACHE_DIR/
+E2a_CACHE/
+E2c_outputs/
+E2c_outputs_v1/
+E2c_outputs_regen_smoke/
+E2c_outputs_regen_smoke_v2/
+E2c_outputs_regen_smoke_v3/
+E2c_outputs_regen_smoke_v4/
+H4_synthetic_roentgen_v2/
+notebooks/
+dockerUV/
+dockerConda/
+docs/
+*.parquet
+*.pt
+*.ckpt
+
+# Logs
+*.log
+
+# Notebooks
+.ipynb_checkpoints/

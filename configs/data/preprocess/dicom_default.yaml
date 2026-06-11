@@ -1,0 +1,4 @@
+windowing: auto
+pad_to_square: true
+out_size: 896
+photometric_inversion: true

@@ -1,0 +1,5 @@
+name: h1_image_aug_geo
+family: h1
+notes: "Hypothesis 1: geometric augmentation"
+data:
+  augmentation_name: geo

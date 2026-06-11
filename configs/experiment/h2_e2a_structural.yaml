@@ -1,0 +1,6 @@
+name: h2_e2a_structural
+family: h2
+notes: "Hypothesis 2 E2A structural target augmentation"
+data:
+  experiment_mode: e2a
+  prepare_mode: e2a

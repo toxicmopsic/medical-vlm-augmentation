@@ -1,0 +1,5 @@
+name: h1_image_aug_photo
+family: h1
+notes: "Hypothesis 1: photometric augmentation"
+data:
+  augmentation_name: photo

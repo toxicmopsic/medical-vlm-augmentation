@@ -1,0 +1,135 @@
+defaults:
+  - common
+
+mimic_root: /storage_server/Data/PublicDatasets/MIMIC-CXR-DICOM
+cache_dir: ${paths.root_dir}/MIMIC_CACHE_DIR
+cache_tag: v1
+
+# H2 caches
+# e2b_synonym intentionally excluded
+e2a_dir: ${paths.root_dir}/E2a_CACHE
+e2a_cache_path: ${data.e2a_dir}/mimic_e2a_struct_targets_${data.cache_tag}.parquet
+e2c_out_dir: ${paths.root_dir}/E2c_outputs
+e2c_merged_path: ${data.e2c_out_dir}/e2c_best_train_MERGED_${data.e2c_num_shards}shards.parquet
+
+# E2A params
+e2a_build_max_rows: -1
+e2a_aug_per_sample: 5
+e2a_apply_p: 1.0
+e2a_use_radgraph: false
+e2a_rg_mode: threshold
+e2a_max_char_delta: 800
+
+e2a_thresholds:
+  min_ent_p: 0.98
+  min_ent_r: 0.95
+  min_rel_p: 0.90
+  min_rel_r: 0.80
+
+e2a_diffs:
+  max_extra_ent: 1
+  max_missing_ent: 1
+  max_extra_rel: 2
+  max_missing_rel: 1
+
+# E2C params
+e2c_shards_dir: ${data.cache_dir}
+e2c_use_pre_sharded_clean: true
+e2c_checkpoint_every: 1000
+e2c_resume: true
+e2c_num_shards: 4
+e2c_shard_id: 0
+e2c_merge_shard_ids: []
+e2c_aug_split: train
+e2c_max_rows: -1
+e2c_apply_p: 1.0
+
+e2c_llm_model_id: google/medgemma-4b-it
+e2c_llm_kind: causal
+e2c_llm_dtype: bfloat16
+e2c_llm_device: cuda:0
+e2c_llm_batch_size: 1
+e2c_llm_input_max_length: 1024
+e2c_candidates_per_prompt: 8
+e2c_max_new_tokens: 220
+e2c_min_new_tokens: 16
+e2c_temperature: 0.8
+e2c_top_p: 0.95
+e2c_repetition_penalty: 1.10
+e2c_no_repeat_ngram: 4
+
+e2c_aux_device: cuda:0
+e2c_use_quick_safety: true
+e2c_use_lexical_filter: true
+e2c_use_ascii_filter: true
+e2c_use_format_filter: true
+e2c_use_radgraph: false
+e2c_use_chexbert: true
+e2c_use_medsiglip: true
+e2c_lex_max_seq_ratio: 0.92
+e2c_lex_max_4gram_overlap: 0.85
+e2c_lex_min_token_change: 0.12
+e2c_format_min_char_ratio: 0.55
+e2c_format_max_char_ratio: 1.80
+e2c_medsiglip_model_id: google/medsiglip-448
+e2c_medsiglip_mode: impression
+e2c_medsiglip_min_sim: 0.75
+e2c_medsiglip_max_sim: 0.985
+
+# CheXbert helper paths
+chexbert_enable: false
+chexbert_repo_dir: ${paths.root_dir}/../CheXbert
+chexbert_cache_dir: ${paths.root_dir}/../chexbert_ckpt
+
+# H4: RoentGen-v2 synthetic CXR pretraining experiment
+h4_out_dir: ${paths.root_dir}/H4_synthetic_roentgen_v2
+h4_artifact_name: ""
+h4_artifacts_dir: ${data.h4_out_dir}/artifacts
+h4_artifact_dir: null
+h4_manifests_dir: ${data.h4_out_dir}/manifests
+h4_images_raw_dir: ${data.h4_out_dir}/images_raw
+h4_source_split: train
+h4_train_stage: none
+h4_case_order: random
+h4_source_seed: ${seed}
+h4_fixed_source_manifest_path: ""
+h4_require_patient_sex: true
+h4_use_patient_sex_in_prompt: true
+h4_sex_text_fields:
+- indication
+- ref_findings
+- ref_impression
+h4_real_subset_policy: selected
+h4_real_subset_size: -1
+h4_candidates_per_study: 2
+h4_target_accepted_studies: 2000
+h4_max_source_studies: -1
+h4_resume: true
+h4_checkpoint_every: 25
+
+h4_roentgen_model_id: stanfordmimi/RoentGen-v2
+h4_roentgen_text_encoder_id: stanfordmimi/RoentGen-v2
+h4_roentgen_max_tokens: 77
+h4_roentgen_guidance_scale: 3.0
+h4_roentgen_num_inference_steps: 75
+h4_roentgen_resolution: 512
+h4_roentgen_dtype: bf16
+h4_generation_seed_base: 133700
+h4_device: cuda:0
+h4_enable_xformers: true
+h4_hf_cache_dir: null
+
+h4_use_technical_qc: true
+h4_expected_raw_size: 512
+h4_technical_min_std: 0.01
+h4_technical_min_p_range: 0.05
+h4_technical_max_near_black_frac: 0.995
+h4_technical_max_near_white_frac: 0.995
+
+h4_use_medsiglip_qc: true
+h4_medsiglip_model_id: google/medsiglip-448
+h4_medsiglip_device: ${data.h4_device}
+h4_medsiglip_dtype: auto
+h4_medsiglip_max_tokens: 64
+h4_medsiglip_score_kind: sigmoid_logit
+h4_medsiglip_min_sim: 0.000278

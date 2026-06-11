@@ -1,0 +1,29 @@
+defaults:
+  - trl_sft
+  - _self_
+
+backend: trl_sft
+
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 8
+
+bf16: false
+fp16: true
+tf32: false
+optim: adamw_torch_fused
+
+fsdp: full_shard auto_wrap
+fsdp_config:
+  fsdp_version: 1
+  transformer_layer_cls_to_wrap:
+    - Gemma3DecoderLayer
+  backward_prefetch: backward_pre
+  forward_prefetch: false
+  limit_all_gathers: true
+  use_orig_params: true
+  sync_module_states: true
+  cpu_ram_efficient_loading: false
+  activation_checkpointing: false
+
+torch_compile: false

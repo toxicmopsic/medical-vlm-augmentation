@@ -1,0 +1,11 @@
+radeval:
+  enabled: true
+  do_bertscore: true
+  do_f1chexbert: true
+  do_ratescore: true
+  sanitize_ratescore_input: true
+  do_radcliq: true
+  do_green: true
+  do_radgraph: true
+  do_details: false
+  do_per_sample: false

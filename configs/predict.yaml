@@ -1,0 +1,22 @@
+defaults:
+  - _self_
+  - experiment: baseline_mimic
+  - data: mimic
+  - data/preprocess: dicom_default
+  - data/augmentation: none
+  - model: medgemma_4b_pt
+  - model/generation: greedy
+  - lora: default
+  - training: hf_trainer
+  - metrics: reportgen_full
+  - prompts: findings_impression
+  - logging: stdout
+  - paths: default
+  - hydra: default
+
+task_name: predict
+seed: 0
+
+hydra:
+  job:
+    name: ${task_name}

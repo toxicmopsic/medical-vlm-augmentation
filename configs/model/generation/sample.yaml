@@ -1,0 +1,8 @@
+do_sample: true
+num_beams: 1
+max_new_tokens: 224
+min_new_tokens: 0
+temperature: 0.8
+top_p: 0.95
+repetition_penalty: 1.05
+no_repeat_ngram_size: 0

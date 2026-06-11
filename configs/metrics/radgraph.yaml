@@ -1,0 +1,3 @@
+radgraph_enabled: true
+radgraph_model_type: modern-radgraph-xl
+radgraph_reward_level: all

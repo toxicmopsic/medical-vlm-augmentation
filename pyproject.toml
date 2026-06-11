@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thesis-radiology-report-gen"
+version = "0.1.0"
+description = "Research codebase for radiology report generation thesis experiments"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Thesis RRG Team" }]
+dependencies = [
+  "hydra-core>=1.3.2",
+  "omegaconf>=2.3.0",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "pyarrow>=14.0",
+  "tqdm>=4.66",
+  "Pillow>=10.0",
+  "pydicom>=2.4",
+  "torch>=2.2",
+  "transformers>=4.50",
+  "diffusers>=0.35",
+  "datasets>=2.20",
+  "evaluate>=0.4.2",
+  "peft>=0.11",
+  "accelerate>=0.33",
+  "trl>=0.10",
+  "scikit-learn>=1.4",
+  "scipy>=1.11",
+  "rich>=13.7",
+  "RadEval>=0.1.3",
+  "tensorboard>=2.14",
+]
+
+[project.optional-dependencies]
+metrics = [
+  "radgraph>=0.1.18",
+]
+dev = [
+  "pytest>=8.2",
+  "pytest-cov>=5.0",
+  "ruff>=0.6.0",
+]
+
+[project.scripts]
+thesis-rrg-train = "thesis_rrg.cli.train:main"
+thesis-rrg-eval = "thesis_rrg.cli.eval:main"
+thesis-rrg-predict = "thesis_rrg.cli.predict:main"
+thesis-rrg-prepare = "thesis_rrg.cli.prepare_data:main"
+thesis-rrg-summarize = "thesis_rrg.cli.summarize_run:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

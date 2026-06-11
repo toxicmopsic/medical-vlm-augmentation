@@ -1,0 +1,6 @@
+name: h4_b0_real_only
+family: h4
+notes: "H4 matched B0: MedGemma fine-tuning on the real studies selected by the H4 synthetic manifest"
+
+data:
+  h4_train_stage: real_baseline

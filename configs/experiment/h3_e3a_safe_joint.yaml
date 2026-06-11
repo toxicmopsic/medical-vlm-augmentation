@@ -1,0 +1,9 @@
+name: h3_e3a_safe_joint
+family: h3
+notes: "Hypothesis 3 E3a: safe joint augmentation (H1 mix + H2 E2C LLM paraphrase)"
+data:
+  h3_mode: e3a
+  h3_require_textaug: true
+  augmentation_name: mix
+  experiment_mode: e3a
+  prepare_mode: e2c

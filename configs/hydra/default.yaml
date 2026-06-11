@@ -1,0 +1,5 @@
+run:
+  dir: ${paths.outputs_root}/${task_name}/${now:%Y-%m-%d_%H-%M-%S}_${experiment.name}
+
+job:
+  chdir: false
