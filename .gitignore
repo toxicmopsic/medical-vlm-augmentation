@@ -30,6 +30,7 @@ notebooks/
 dockerUV/
 dockerConda/
 docs/
+tests/
 *.parquet
 *.pt
 *.ckpt
